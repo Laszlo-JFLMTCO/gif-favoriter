@@ -9,6 +9,9 @@
   </head>
 
   <body>
+    <% flash.keys.each do |key| %>
+      <p><%= key %>: <%= flash[key] %></p>
+    <% end %>
     <%= yield %>
   </body>
 </html>
