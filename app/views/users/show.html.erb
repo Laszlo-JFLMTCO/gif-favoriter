@@ -1,1 +1,11 @@
-<h1>Hello, <%= @user.name %></h1>
+<div>
+  <p>User Details:</p>
+</div>
+<% if current_user.admin? %>
+  <div>
+    <%= link_to "User List", admin_users_path %>
+  </div>
+  <div>
+    <%= link_to "Content Management", admin_gifs_path %>
+  </div>
+<% end %>

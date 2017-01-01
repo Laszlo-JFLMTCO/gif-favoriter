@@ -10,19 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161220221944) do
+ActiveRecord::Schema.define(version: 20161230042915) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "roles", force: :cascade do |t|
+    t.string   "title"
+    t.boolean  "can_change_roles"
+    t.boolean  "can_add_user"
+    t.boolean  "can_delete_user"
+    t.boolean  "can_add_gif"
+    t.boolean  "can_delete_gif"
+    t.boolean  "can_create_roles"
+    t.boolean  "can_delete_roles"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "user_role_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
     t.string   "username"
-    t.string   "password"
-    t.string   "role",       default: "user"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+    t.string   "password_digest"
+    t.integer  "site_role",       default: 0
+    t.integer  "role_id"
   end
 
 end

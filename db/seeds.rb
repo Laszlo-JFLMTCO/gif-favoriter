@@ -7,15 +7,61 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.destroy_all
-# Role.destroy_all
-
-User.create(username: "admin", password: "admin", role: "admin")
+Role.destroy_all
 
 
-# admin_role = Role.create(
-#   title: "admin",
-#   favorite_things: true,
-#   create_category: true,
-#   delete_category: true,
-#   change_roles: true
-# )
+admin_role = Role.create(
+  title: "admin",
+  can_change_roles: true,
+  can_add_user: true,
+  can_delete_user: true,
+  can_add_gif: true,
+  can_delete_gif: true,
+  can_create_roles: true,
+  can_delete_roles: true,
+  user_role_id: 2
+)
+
+editor_role = Role.create(
+  title: "editor",
+  can_change_roles: false,
+  can_add_user: false,
+  can_delete_user: false,
+  can_add_gif: true,
+  can_delete_gif: true,
+  can_create_roles: false,
+  can_delete_roles: false,
+  user_role_id: 1
+)
+
+user_role = Role.create(
+  title: "user",
+  can_change_roles: false,
+  can_add_user: false,
+  can_delete_user: false,
+  can_add_gif: false,
+  can_delete_gif: false,
+  can_create_roles: false,
+  can_delete_roles: false,
+  user_role_id: 0
+)
+
+admin = User.new(
+  username: "admin",
+  name: "admin",
+  email: "admin",
+  password: "admin"
+)
+
+admin.role = admin_role
+admin.save
+
+user1 = User.new(
+  username: "test1",
+  name: "test1",
+  email: "test1",
+  password: "test1",
+)
+
+user1.role = editor_role
+user1.save

@@ -1,7 +1,9 @@
-<%= form_tag (login_path) do %>
-  <%= label_tag :username %>
-  <%= text_field_tag :username %>
-  <%= label_tag :password %>
-  <%= text_field_tag :password %>
-  <%= submit_tag "Login" %>
-<% end %>
+<div id = "page-content" class = "container">
+  <%= form_tag (login_path) do %>
+    <%= label_tag :username %>
+    <%= text_field_tag :username %>
+    <%= label_tag :password %>
+    <%= text_field_tag :password %>
+    <%= submit_tag "Sign In" %>
+  <% end %>
+</div>
