@@ -19,7 +19,7 @@ RSpec.describe "Admin can view user list" do
     expect(page).to have_content("Hello, #{admin_user.name}")
     expect(page).to have_link("Logout", :href => logout_path)
     expect(page).to have_link("User List", :href => admin_users_path)
-    expect(page).to have_link("Content Management", :href => admin_gifs_path)
+    expect(page).to have_link("Content Management", :href => editor_gifs_path)
 
     click_on "User List"
 

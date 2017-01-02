@@ -21,6 +21,7 @@ class Admin::UsersController < ApplicationController
     @user.role = new_role
     @user.site_role = new_role
     if @user.save
+      flash["success"] = "#{@user.username} user details were successfully updated"
       redirect_to admin_user_path(@user)
     else
       flash["danger"] = @user.errors.full_messages

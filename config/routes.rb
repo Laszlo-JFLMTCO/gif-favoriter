@@ -11,6 +11,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users, :only => [:index, :show, :edit, :update, :destroy]
-    resources :gifs, :only => [:index]
+  end
+
+  namespace :editor do
+    resources :gifs, :only => [:index, :new, :create, :destroy]
   end
 end
