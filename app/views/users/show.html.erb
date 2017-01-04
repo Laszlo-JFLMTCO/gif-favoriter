@@ -1,0 +1,11 @@
+<div>
+  <p>User Details:</p>
+</div>
+<% if current_user.admin? %>
+  <div>
+    <%= link_to "User List", admin_users_path %>
+  </div>
+  <div>
+    <%= link_to "Content Management", editor_gifs_path %>
+  </div>
+<% end %>

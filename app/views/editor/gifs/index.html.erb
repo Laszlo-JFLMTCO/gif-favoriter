@@ -1,0 +1,32 @@
+<div class = "container">
+  <%= form_for :search, url: new_editor_gif_path, method: :get, :html => {:class => "form-horizontal"} do |f| %>
+    <div class = "form-group">
+      <%= f.label :keyword, :class => "col-sm-2 control-label" %>
+      <div class = "col-sm-2">
+        <%= f.text_field :keyword, :class => "form-control" %>
+      </div>
+      <div class = "col-sm-2">
+        <%= f.submit "Generate Gifs", :class => "btn btn-default" %>
+      </div>
+    </div>
+  <% end %>
+
+  <h3>Gif List</h3>
+
+  <table class = "table">
+    <tr>
+      <th>DB ID</th>
+      <th>Image</th>
+      <th>Category</th>
+      <th>Action</th>
+    </tr>
+    <% @gifs.each do |gif|%>
+      <tr>
+        <td><%= link_to gif.id, gif.url %></td>
+        <td><img src="<%= gif.fixed_width_downsampled_url %>" class="img-responsive" alt="Responsive image"></td>
+        <td><%= gif.category.title %></td>
+        <td class = "text-center"><%= link_to "Delete", editor_gif_path(gif), method: :delete, class: "btn btn-danger" %></td>
+      </tr>
+    <% end  %>
+  </table>
+</div>
